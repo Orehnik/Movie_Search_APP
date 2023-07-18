@@ -44,6 +44,9 @@ body {
 .body_fix {
     overflow: visible;
 }
+.body_off {
+    overflow: hidden;
+}
 
 #input-field {
     height: 40px;

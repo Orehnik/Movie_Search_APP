@@ -8,6 +8,8 @@ const cardMovieBox = document.getElementById('card-movie-box');
 const closeBtn = document.getElementById('close-btn');
 
 
+
+
 btnField.addEventListener('click', () => {
     getResults();
 });
@@ -63,8 +65,9 @@ const getResults = () => {
 movieList.addEventListener('click', (e) => {
     cardMovie.innerHTML = "";
     cardMovieBox.classList.add('active')
-    document.body.classList.add('body_fix')
+    document.body.classList.add('body_off')
     const target = e.target.closest(".search-item");
+    
     const targetId = target.id;
 
     fetch(`https://www.omdbapi.com/?&apikey=1bb85eb&i=${targetId}`)
