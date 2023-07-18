@@ -112,5 +112,5 @@ movieList.addEventListener('click', (e) => {
 
 closeBtn.addEventListener('click', () => {
    cardMovieBox.classList.remove('active');
-   body.classList.remove('body_fix');
+   document.body.classList.remove('body_fix');
 })
