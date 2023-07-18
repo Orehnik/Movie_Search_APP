@@ -28,6 +28,10 @@ body {
     margin: 0 auto;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.288);
+    -webkit-backdrop-filter: blur(30px);
+    -moz-backdrop-filter: blur(30px);
+    -o-backdrop-filter: blur(30px);
+    -ms-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
     overflow: visible;
     word-wrap: normal;
