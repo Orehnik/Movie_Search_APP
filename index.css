@@ -1,0 +1,138 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(5, 7, 19);
+    color: azure;
+}
+
+#errorPlaceholder{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.error-message{
+    color: rgb(28, 125, 190);
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.card-movie-box {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.288);
+    -webkit-backdrop-filter: blur(30px);
+    -moz-backdrop-filter: blur(30px);
+    -o-backdrop-filter: blur(30px);
+    -ms-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    overflow: visible;
+    word-wrap: normal;
+}
+.card-movie{
+    width: 1000px;
+    margin: 0 auto;
+}
+.active {
+    display: block;
+    overflow: hidden;
+}
+
+.body_fix {
+    overflow: visible;
+}
+.body_off {
+    overflow: hidden;
+}
+
+#input-field {
+    height: 40px;
+    width: 600px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px;
+}
+#input-field:focus{
+    outline: none;
+}
+.search-item {
+    
+    display: flex;
+    padding: 20px;
+    margin: 40px 0;
+}
+
+.search-item-popup {
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px;
+    max-width: 1000px;
+}
+
+.search-item:hover {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.06);
+    outline: 1px solid  rgb(153, 214, 255);
+}
+.description {
+    padding: 0 20px;
+    max-width: 1200px;
+    font-size: 22px;
+}
+
+.descr {
+    display: flex;
+}
+
+.search-item img {
+    border-radius: 5px;
+    max-height: 400px;
+}
+
+button {
+    appearance: none;
+    cursor: pointer;
+    min-width: 100px;
+    height: 40px;
+    border: 0px;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 16px;
+    background: rgb(28, 125, 190);
+    padding: 0.5em 1em;
+    color: azure;
+}
+
+button:hover {
+    background: rgb(36, 160, 243);
+}
+
+.button {
+ width: 1000px;
+ margin: 0 auto;
+ padding: 40px 0 20px 900px;
+}
+
+.search-item-popup span{
+    color: rgb(36, 160, 243);
+}
+
+#movie-list {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.input-form{
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    gap: 25px;
+    padding: 25px 0 0 0;
+}
