@@ -6,6 +6,7 @@ const errorPlaceholder = document.getElementById('errorPlaceholder');
 const cardMovie = document.getElementById('card-movie');
 const cardMovieBox = document.getElementById('card-movie-box');
 const closeBtn = document.getElementById('close-btn');
+const key = '1bb85eb';
 
 
 
@@ -19,7 +20,7 @@ const getResults = () => {
     let movieTitle = inputField.value
     movieList.innerHTML = `` ;
     errorPlaceholder.innerHTML = `` ;
-    fetch(`https://www.omdbapi.com/?s=${movieTitle}&apikey=1bb85eb&`)
+    fetch(`https://www.omdbapi.com/?s=${movieTitle}&apikey=${key}&`)
     .then((response) => {
         return response.json()
     })
@@ -41,7 +42,7 @@ const getResults = () => {
             const poster = e.Poster
             movieList.innerHTML += `
             <div id="${imdbID}" class ="search-item">
-                <div class="descr">
+                <div class="description_flex">
                     <div class="description">
                     <img src="${poster}" alt="${title}">
                     </div>
@@ -62,55 +63,71 @@ const getResults = () => {
 }
 
 
-movieList.addEventListener('click', (e) => {
-    cardMovie.innerHTML = "";
-    cardMovieBox.classList.add('active')
-    document.body.classList.add('body_off')
-    const target = e.target.closest(".search-item");
+const openModal =(event) =>{
+
+    if (!event.target.closest('.search-item')) {
+        return
+    }
+
+    if (event.target.closest('.search-item')){
+        const selectMovie = event.target.closest('.search-item');
+        id = selectMovie.getAttribute('id');
+        showModalCard(id);
+        cardMovieBox.classList.add('active')
+        document.body.classList.add('body_off')
+    }
     
-    const targetId = target.id;
+}
 
-    fetch(`https://www.omdbapi.com/?&apikey=1bb85eb&i=${targetId}`)
-    .then((response) => {
-        return response.json()
-    })
+const showModalCard=(id)=> {
+    const targetId = id
 
+    fetch(`https://www.omdbapi.com/?&apikey=${key}&i=${targetId}`)
+    .then(response => response.json())
     .then((result) => {
-        let title = result.Title;
-        let year = result.Year;
-        let rated = result.Rated;
-        let released = result.Released;
-        let runtime = result.Runtime;
-        let genre = result.Genre;
-        let director = result.Director;
-        let writer = result.Writer;
-        let actors = result.Actors;
-        let plot = result.Plot;
-        let poster = result.Poster;
-        let imdbID = result.imdbID;
-    
-        cardMovie.innerHTML += `
-            <div id="${imdbID}" class ="search-item-popup">
-                <img src="${poster}" alt="${title}">
+        renderModalCard(result)
+        }); 
+}
+
+const renderModalCard = (result)=>{
+    cardMovie.innerHTML = ''
+    cardMovie.innerHTML += `
+            <div id="${result.imdbID}" class ="search-item-popup">
+                <img src="${result.Poster}" alt="${result.Title}">
                 <div class="description">
-                    <div> ${title} </div>
-                    <div> <span>${year}</span></div>
-                    <div> Rating: <span>${rated}</span></div>
-                    <div> Released: <span>${released}</span></div>
-                    <div> Duration: <span>${runtime}</span></div>
-                    <div> Genre: <span>${genre}</span></div>
-                    <div> Director: <span>${director}</span></div>
-                    <div> Writer <span>${writer}</span></div>
-                    <div> Cast: <span>${actors}</span></div>
-                    <div> Plot: <span>${plot}</span></div>
+                    <div class="title_movie"> ${result.Title} </div>
+                    <div> <span>${result.Year}</span></div>
+                    <div> Rating: <span>${result.Rated}</span></div>
+                    <div> Released: <span>${result.Released}</span></div>
+                    <div> Duration: <span>${result.Runtime}</span></div>
+                    <div> Genre: <span>${result.Genre}</span></div>
+                    <div> Director: <span>${result.Director}</span></div>
+                    <div> Writer <span>${result.Writer}</span></div>
+                    <div> Cast: <span>${result.Actors}</span></div>
+                    <div> Plot: <span>${result.Plot}</span></div>
                 </div>
             </div>`;
-    })
-    
-})
+    }
 
 
-closeBtn.addEventListener('click', () => {
-   cardMovieBox.classList.remove('active');
-   document.body.classList.remove('body_off');
-})
+const closeModal = (event) => {
+    if (!event.target.closest('.close-btn')) {
+        return
+    }
+
+    if (event.target.closest('.close-btn')){
+        cardMovieBox.classList.remove('active');
+        document.body.classList.remove('body_off');
+      }
+}
+
+
+
+
+    movieList.addEventListener('click',openModal);
+
+
+    closeBtn.addEventListener('click', closeModal);
+
+
+

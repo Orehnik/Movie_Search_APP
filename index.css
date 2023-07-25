@@ -87,7 +87,7 @@ body {
     font-size: 22px;
 }
 
-.descr {
+.description_flex {
     display: flex;
 }
 
@@ -135,4 +135,9 @@ button:hover {
     margin: 0 auto;
     gap: 25px;
     padding: 25px 0 0 0;
+}
+
+.title_movie {
+    font-size: 30px;
+    color: rgb(89, 0, 255);
 }
